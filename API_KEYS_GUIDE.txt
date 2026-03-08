@@ -1,0 +1,105 @@
+# 🔑 Free API Keys Setup Guide
+# Smart Travel Manager v2
+# All services below are 100% free, no credit card required
+
+═══════════════════════════════════════════════════════════════
+1. FIREBASE — User accounts, saved trips, bookings, reviews
+   (Free Spark Plan — never expires, no credit card)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Go to console.firebase.google.com
+STEP 2: Click "Add project" → name it "smart-travel-manager" → Continue
+STEP 3: Disable Google Analytics (not needed) → Create project
+STEP 4: Click the </> icon (Web app) → Register app → name it anything
+STEP 5: Copy the firebaseConfig object shown — it looks like:
+  {
+    apiKey: "AIzaSy...",
+    authDomain: "smart-travel-xxx.firebaseapp.com",
+    projectId: "smart-travel-xxx",
+    ...
+  }
+STEP 6: In your .env file, paste each value:
+  VITE_FIREBASE_API_KEY=AIzaSy...
+  VITE_FIREBASE_AUTH_DOMAIN=smart-travel-xxx.firebaseapp.com
+  etc.
+
+STEP 7: Enable Authentication:
+  Firebase Console → Authentication → Get started → Email/Password → Enable
+  (Optional) → Google → Enable → add your gmail as support email
+
+STEP 8: Enable Firestore Database:
+  Firebase Console → Firestore Database → Create database
+  → Start in test mode → Choose region nearest to you → Done
+
+Without Firebase keys: App runs in DEMO MODE using localStorage.
+Everything still works — trips/bookings save in the browser.
+
+═══════════════════════════════════════════════════════════════
+2. OPENWEATHER — Live weather for destinations
+   (Free — 60 calls/min, 1M/month, forever free)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Go to openweathermap.org → Sign Up (free)
+STEP 2: Confirm your email
+STEP 3: Go to your profile → API Keys
+STEP 4: Copy the "Default" key (or create a new one)
+STEP 5: Add to .env:
+  VITE_OPENWEATHER_KEY=abc123def456...
+
+Note: New keys take ~10 minutes to activate.
+Without a key: App shows realistic mock weather data.
+
+═══════════════════════════════════════════════════════════════
+3. AMADEUS — Real flight & hotel search
+   (Free Sandbox — no credit card, real flight structures)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Go to developers.amadeus.com
+STEP 2: Click "Register" → sign up free
+STEP 3: Go to "My Apps" → Create New App
+STEP 4: Copy Client ID and Client Secret
+STEP 5: Add to .env:
+  VITE_AMADEUS_CLIENT_ID=your-client-id
+  VITE_AMADEUS_CLIENT_SECRET=your-client-secret
+
+The sandbox (test.api.amadeus.com) is free forever.
+It returns real airline/hotel names with realistic test data.
+Without keys: App generates realistic mock flights and hotels.
+
+═══════════════════════════════════════════════════════════════
+4. EXCHANGE RATE API — Live currency conversion
+   (Free — 1,500 requests/month, forever free)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Go to exchangerate-api.com → "Get Free Key"
+STEP 2: Enter email → confirm → get your key
+STEP 3: Add to .env:
+  VITE_EXCHANGE_KEY=your-key-here
+
+Without key: App uses built-in approximate exchange rates.
+
+═══════════════════════════════════════════════════════════════
+5. UNSPLASH PHOTOS — Dynamic destination images
+   (Free — no key needed at all!)
+═══════════════════════════════════════════════════════════════
+
+Already works out of the box!
+Uses source.unsplash.com which is completely free with no API key.
+Every search term returns a beautiful travel photo automatically.
+
+═══════════════════════════════════════════════════════════════
+RUNNING WITHOUT ANY KEYS (Demo Mode)
+═══════════════════════════════════════════════════════════════
+
+The app works perfectly without any API keys:
+✅ Full UI and navigation
+✅ All 60+ destinations with photos
+✅ Mock flight results (realistic airline data)
+✅ Mock hotel listings
+✅ Mock weather data
+✅ Built-in exchange rates (50+ currencies)
+✅ Trips/bookings save to browser localStorage
+✅ Login with any email + any 6-char password
+
+Just rename .env.example to .env and leave the values as-is.
+Add real keys one by one as you get them for full live data.
